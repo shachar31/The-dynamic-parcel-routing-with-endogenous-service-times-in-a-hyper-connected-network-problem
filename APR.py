@@ -120,20 +120,18 @@ while num_parcel != num_parcel_finish:
                     parcel_to_return.append(parcel)
             else:
                 parcel_to_return.append(parcel)
-        q = 0
+
         for parcel in L[vehicle.curr_station[0]]:
             if parcel.prev_line != vehicle.line_number:
                 x = (paths_data[:, 0] == vehicle.curr_station[0]) & (paths_data[:, 1] == parcel.target)
                 lines_up = paths_data[x, 2]
-                if vehicle.line_number in lines_up:
-                    q += 1
 
         for parcel in parcel_to_return:
             heapq.heappush(L[vehicle.curr_station[0]], parcel)
 
         if warm_up_duration * 1440 <= T_now <= number_days * 1440:
             vehicles_times.append([vehicle.line_number, vehicle.vehicle_number, vehicle.curr_station[0],
-                                   vehicle.curr_station[1], T_now, work_time, q, len(L[vehicle.curr_station[0]])])
+                                   vehicle.curr_station[1], T_now, work_time])
 
         if vehicle.curr_station == vehicle.end_station:
             vehicle_next_station, travel_time = vehicle.end_station[0], 0
@@ -147,7 +145,7 @@ while num_parcel != num_parcel_finish:
         heapq.heappush(p, Event(T_now + work_time + travel_time, vehicle, 'Vehicle_Stop'))
 
 vehicles_times = pd.DataFrame(vehicles_times, columns=['Line', 'Vehicle', 'Station', 'Direction',
-                                                       'Entry time', 'Work time', 'Shortages', 'Queue'])
-vehicles_times.to_excel(f'results/vehicles_times.xlsx')
+                                                       'Entry time', 'Work time'])
+vehicles_times.to_excel(f'vehicles_times.xlsx')
 
 print(f'APR - Mean delivery time {np.mean(parcel_times)} [min]')
