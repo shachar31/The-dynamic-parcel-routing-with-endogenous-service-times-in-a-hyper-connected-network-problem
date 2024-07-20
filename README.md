@@ -46,6 +46,7 @@ This project implements a system to optimize parcel routing and delivery times w
    - `teg_mode (string)`: The method of finding the path for the parcel on the TEG:
        - "min_transfers" - a path that lexicographically minimizes the number of transfers and the delivery time.
        - "min_time" - a path that minimizes the delivery time of the parcel.
+   - `max_iterations (int)`: The stopping criterion of the simulation-based search algorithm for update method 2
 
   4. **Data generation:**
   ```
