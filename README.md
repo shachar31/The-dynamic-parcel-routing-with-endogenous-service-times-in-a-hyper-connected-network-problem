@@ -17,6 +17,8 @@ This project implements a system to optimize parcel routing and delivery times w
 1. **Cloning the Repository:**
    ```
    git clone https://github.com/shachar31/The-dynamic-parcel-routing-with-endogenous-service-times-in-a-hyper-connected-network-problem.git
+   ```
+   ```
    cd The-dynamic-parcel-routing-with-endogenous-service-times-in-a-hyper-connected-network-problem
    ```
 
