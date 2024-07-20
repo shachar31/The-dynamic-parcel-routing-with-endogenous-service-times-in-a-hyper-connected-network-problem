@@ -1,11 +1,10 @@
 import numpy as np
 import pandas as pd
 import pickle
-import time
 import copy
 from fdt_functions import sim, create_graph, update_dwell_time
 from classes import Solution
-from parameters import alpha, daily_arrival_rate, update_method, teg_mode, vehicles_to_add
+from parameters import alpha, daily_arrival_rate, update_method, teg_mode, vehicles_to_add, max_iterations
 
 
 # Network data
@@ -41,11 +40,9 @@ if teg_mode == 'min_transfers':
 else:
     parcels_max_change = None
 
-start = time.time()
 results_data = []
 objective = []
 iterations_no_improvement = 0
-max_iterations = 10
 iteration_number = 1
 update_size = 1
 stopping_criterion = False
@@ -92,8 +89,7 @@ while not stopping_criterion:
             lines = copy.deepcopy(prev_lines)
 print(f'FDT :')
 print(f'The initial solution: {first_sol}')
-print(f'The best solution was {best_solution.objective} and obtained at iteration {best_solution.iteration}')
-print(f'Total run time  {time.time() - start}')
+print(f'The final solution was {best_solution.objective} and obtained at iteration {best_solution.iteration}')
 print(' ')
 
 indicators_dwell_time_capacity = pd.DataFrame(results_data, columns=['Iteration', 'Line', 'Station',
@@ -101,8 +97,8 @@ indicators_dwell_time_capacity = pd.DataFrame(results_data, columns=['Iteration'
                                                                      'Percent of shortage', 'Quantity of shortage',
                                                                      'Cost of shortage', 'Percent of surplus',
                                                                      'Quantity of surplus', 'Cost of surplus',
-                                                                     'vehicle capacity', 'Station capacity'])
-indicators_dwell_time_capacity.to_excel(f'results/indicators_dwell_time_capacity.xlsx')
+                                                                     'vehicle capacity'])
+indicators_dwell_time_capacity.to_excel(f'dwell_time_capacity.xlsx')
 
 objective_FDT = pd.DataFrame(objective, columns=['Iteration', 'Objective (FDT)'])
-objective_FDT.to_excel('results/objective_FDT.xlsx')
+objective_FDT.to_excel('objective_FDT.xlsx')
