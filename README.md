@@ -55,6 +55,20 @@ This project implements a system to optimize parcel routing and delivery times w
   python APR.py
   ```
 
+
+## Descriptions of Data Files
+- **`network_data:`**
+  This Excel file represents the network configuration including SPs and travel times. The file includes the following columns:
+     - `Line`: The identifier for a vehicle route.
+     - `From`: The starting SP of a leg within the vehicle route.
+     - `To`: The ending SP of a leg within the vehicle route.
+     - `Direction`: Indicates the direction of travel between SPs, typically noted as 'f' for forward or 'b' for backward.
+     - `Time`: The travel time required to move from the `from` SP to the `to` SP.
+- **`parcels_arrivals_times.p:`**
+  This is a serialized Python pickle file containing the simulated arrival times of parcels within the network. It is based on a simulation scenario for a network configuration with a daily arrival rate. The file contains data structured as lists detailing each parcel's source, destination, and arrival time at the network.
+
+
+
 ## Results:
    - **FDT**:
      - `dwell_time_capacity.xlsx` - includes the dwell times at each stop along the vehicle route at each iteration of the algorithm, along with measures of surplus and shortage of the dwell time and the vehicle capacities.
