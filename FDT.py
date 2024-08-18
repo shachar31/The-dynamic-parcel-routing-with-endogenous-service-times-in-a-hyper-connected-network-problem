@@ -93,7 +93,7 @@ print(f'The final solution was {best_solution.objective} and obtained at iterati
 print(' ')
 
 indicators_dwell_time_capacity = pd.DataFrame(results_data, columns=['Iteration', 'Line', 'Station',
-                                                                     'Direction', 'Stay time (units of parcels)',
+                                                                     'Direction', 'Dwell time',
                                                                      'Percent of shortage', 'Quantity of shortage',
                                                                      'Cost of shortage', 'Percent of surplus',
                                                                      'Quantity of surplus', 'Cost of surplus',
