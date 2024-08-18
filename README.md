@@ -1,6 +1,6 @@
 # Dynamic Parcel Routing with Endogenous Service Times in a Hyper-Connected Network
 
-This project implements a system to optimize parcel routing and delivery times within a hyper-connected grid network using advanced transportation algorithms including Fixed Dwell Time (FDT) and Anti-bunching Priority Routing (APR).
+This project implements a system to optimize parcel routing and delivery times within a hyper-connected network.
 
 ## Project Structure
 - `parameters.py`: Sets up the problem parameters and other parameters used by the algorithms, detailed below.
